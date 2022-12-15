@@ -27,7 +27,7 @@ function renderJobs(jobsList){
                 <p class="tag">${job.modalities[1]}</p>
                 </div>
               
-              <button class="applyButton" data-id= "${job.id}" >Apply</button>
+              <button class="applyButton" data-id= ${job.id} >Apply</button>
             </div>
         `)
     })
@@ -44,8 +44,6 @@ function selectJobs(jobsList) {
             const selectedJob = jobsData.find(job => job.id === Number(event.target.dataset.id));
 
             const localStorageSJ = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
-
-            console.log(localStorageSJ.includes(selectedJob))
 
             if(localStorageSJ.length === 0){
               localStorageSJ.push(selectedJob);
@@ -68,33 +66,34 @@ function selectJobs(jobsList) {
 selectJobs(jobsData)
 
 function renderSelectedJobs(jobsSelected){
-    const selectedJobsList = document.querySelector('.selectedJobsList');
+  const selectedJobsList = document.querySelector('.selectedJobsList');
 
-    selectedJobsList.innerHTML = '',
+  selectedJobsList.innerHTML = '',
 
-    console.log(jobsSelected)
 
-    jobsSelected.forEach((job) => {
-        selectedJobsList.insertAdjacentHTML('beforeend', 
-        `
-        <li class="selectedJob">
+  jobsSelected.forEach((job) => {
+    selectedJobsList.insertAdjacentHTML('beforeend', 
+      `
+      <li class="selectedJob">
 
-            <h5>${job.title}</h5>
+        <h5>${job.title}</h5>
 
-            <div class="small__container">
+        <div class="small__container">
 
-              <small>${job.enterprise}</small>
+          <small>${job.enterprise}</small>
 
-              <small>${job.location}</small>
+          <small>${job.location}</small>
 
-            </div>
+          </div>
 
-            <button class="removeButton" data-id="${job.id}"><img src="/assets/img/trash.svg" alt="Trash icon"></button>
-        </li>
-        <hr>
-        `)
+          <button class="removeButton" data-id="${job.id}" ><img src="/assets/img/trash.svg" alt="Trash icon"></button> 
+      </li>
+      <hr>
+      `)
 
-    })
+  })
+
+  removeJobButton()
 
 }
 
@@ -112,22 +111,23 @@ function checkLocalStorage () {
 
 checkLocalStorage ()
 
+function removeJobButton () {
 
-/* 
+  const removeButtons = [...document.querySelectorAll('.removeButton')]
 
-<li class="selectedJob">
+  removeButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
 
-            <h5>Pessoa desenvolvedora front-end - React JS</h5>
+      const localStorageList = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
 
-            <div class="small__container">
+      const jobIndex = localStorageList.findIndex((job) => job.id === Number(event.target.dataset.id));
 
-              <small>Kenzie Academy</small>
+      localStorageList.splice(jobIndex, 1);
 
-              <small>Curitiba</small>
+      localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageList));
 
-            </div>
+      renderSelectedJobs(localStorageList);
+    })
+  })
+}
 
-            <button class="removeButton" data-id=""><img src="/assets/img/trash.svg" alt="Trash icon"></button>
-          </li>
-          <hr>
-*/

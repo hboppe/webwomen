@@ -58,3 +58,87 @@
 .text__container > p{
     font-weight: 600;
 }
+
+section.jobs {
+    padding: 2.813rem 1rem;
+}
+
+section.jobs > h4 {
+    font-size: var(--title-4);
+    padding-bottom: 2.813rem;
+    color: var(--color-grey-1);
+}
+
+li.jobOffer {
+    background-color: var(--color-grey-6);
+    list-style: none;
+    padding: 2.375rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    gap: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+div.jobOffer__topContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.jobOffer__topContainer > h4 {
+    color: var(--color-grey-1);
+    line-height: 2rem;
+}
+
+li.jobOffer p {
+    color: var(--color-grey-2);
+    font-size: var(--text-2);
+    line-height: 2rem;
+}
+
+.jobOffer__topContainer > small {
+    color: var(--color-grey-2);
+}
+
+.small__container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+p.tag {
+    background-color: var(--color-grey-3);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+div.tagButton__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.tag__container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+div.tagButton__container > button {
+    color: var(--color-grey-6);
+    background-color: var(--color-brand-1);
+    border: 2px solid #6741D9;
+    padding: 7px 87px;
+    border-radius: 8px;
+    font-size: var(--text-2);
+    
+}
+
+
+button {
+    cursor: pointer;
+}

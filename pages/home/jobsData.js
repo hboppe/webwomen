@@ -1,12 +1,12 @@
 const jobsData = [
   {
     id: 0,
-    title: "Pessoa desenvolvedora front-end - React",
+    title: "Front-end developer - React",
     enterprise: "Kenzie",
     location: "Curitiba",
     descrition:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    modalities: ["Hibrido", "Presencial"],
+    modalities: ["Hybrid", "In-Office"],
   },
   {
     id: 1,
@@ -15,7 +15,7 @@ const jobsData = [
     location: "Rio de Janeiro",
     descrition:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    modalities: ["Home Office", "Presencial"],
+    modalities: ["Remote", "In-Office"],
   },
   {
     id: 2,
@@ -24,6 +24,6 @@ const jobsData = [
     location: "Rio de Janeiro",
     descrition:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    modalities: ["Home Office", "Presencial"],
+    modalities: ["Remote", "In-Office"],
   },
 ];

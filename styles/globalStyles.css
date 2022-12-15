@@ -35,7 +35,27 @@ img {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--color-grey-3);
+  background-color: var(--color-grey-5);
+}
+
+h1 {
+  font-size: var(--title-1);
+}
+
+h2 {
+  font-size: var(--title-2);
+}
+
+h3 {
+  font-size: var(--title-3);
+}
+
+h4 {
+  font-size: var(--title-4);
+}
+
+h5 {
+  font-size: var(--title-5);
 }
 
 .container {

@@ -10,7 +10,7 @@ const jobsData = [
   },
   {
     id: 1,
-    title: "Pessoa desenvolvedora back-end - Node JS",
+    title: "Back-end developer - Node JS",
     enterprise: "Brazilians in Tech",
     location: "Rio de Janeiro",
     descrition:
@@ -19,7 +19,7 @@ const jobsData = [
   },
   {
     id: 2,
-    title: "Pessoa desenvolvedora Fullstack - Node JS",
+    title: "Fullstack developer - Node JS",
     enterprise: "Brazilians in Tech",
     location: "Rio de Janeiro",
     descrition:

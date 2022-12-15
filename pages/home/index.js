@@ -4,8 +4,6 @@ function renderJobs(jobsList){
 
     const jobsSection = document.querySelector('.jobsList');
 
-    localStorage.setItem('@webwomen:jobs', []);
-
     jobsList.map((job) => {
         jobsSection.insertAdjacentHTML("beforeend", 
         `
@@ -42,16 +40,26 @@ function selectJobs(jobsList) {
 
     addJobButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
-            const selectedJob = jobsData.filter(job => job.id === Number(event.target.dataset.id));
 
-            const selectedJobsLS = JSON.stringify(localStorage.getItem('@webwomen:jobs'));
+            const selectedJob = jobsData.find(job => job.id === Number(event.target.dataset.id));
 
-            if(!selectedJobsLS.find(selectedJob)) {
-                selectedJobsLS.push(selectedJob);
+            const localStorageSJ = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
 
-                localStorage.getItem('@webwomen:jobsselected') = JSON.stringify(selectedJobsLS);
+            console.log(localStorageSJ.includes(selectedJob))
 
-                renderSelectedJobs(selectedJobsLS);
+            if(localStorageSJ.length === 0){
+              localStorageSJ.push(selectedJob);
+
+              localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
+
+              renderSelectedJobs(localStorageSJ);
+            }
+            else if(localStorageSJ.find((elem) => elem.id === selectedJob.id) === undefined) {
+              localStorageSJ.push(selectedJob);
+
+              localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
+
+              renderSelectedJobs(localStorageSJ);
             }
         })
     })
@@ -62,9 +70,9 @@ selectJobs(jobsData)
 function renderSelectedJobs(jobsSelected){
     const selectedJobsList = document.querySelector('.selectedJobsList');
 
-    const selectedJobsLS = JSON.parse(localStorage.getItem('@webwomen:jobs'));
-
     selectedJobsList.innerHTML = '',
+
+    console.log(jobsSelected)
 
     jobsSelected.forEach((job) => {
         selectedJobsList.insertAdjacentHTML('beforeend', 
@@ -75,7 +83,7 @@ function renderSelectedJobs(jobsSelected){
 
             <div class="small__container">
 
-              <small>${jb.enterprise}</small>
+              <small>${job.enterprise}</small>
 
               <small>${job.location}</small>
 
@@ -90,7 +98,20 @@ function renderSelectedJobs(jobsSelected){
 
 }
 
-renderSelectedJobs(JSON.stringify(localStorage.getItem('@webwomen:jobsselected')))
+
+function checkLocalStorage () {
+
+  if(localStorage.length === 0){
+    localStorage.setItem('@webwomen:jobsselected', JSON.stringify([]))
+
+  } else {
+    renderSelectedJobs(JSON.parse(localStorage.getItem('@webwomen:jobsselected')))
+  }
+
+}
+
+checkLocalStorage ()
+
 
 /* 
 

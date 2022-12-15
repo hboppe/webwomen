@@ -1,4 +1,3 @@
-/* Desenvolva sua lógica aqui... */
 
 function renderJobs(jobsList){
 
@@ -18,7 +17,6 @@ function renderJobs(jobsList){
               </div>
             </div>
            
-
             <p>${job.descrition}</p>
 
             <div class="tagButton__container">
@@ -70,7 +68,6 @@ function renderSelectedJobs(jobsSelected){
 
   selectedJobsList.innerHTML = '',
 
-
   jobsSelected.forEach((job) => {
     selectedJobsList.insertAdjacentHTML('beforeend', 
       `
@@ -93,15 +90,28 @@ function renderSelectedJobs(jobsSelected){
 
   })
 
+  const localStorageList = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
+
+  if(localStorageList.length === 0){
+    checkLocalStorage ();
+  }
+
+
   removeJobButton()
-
 }
-
 
 function checkLocalStorage () {
 
-  if(localStorage.length === 0){
-    localStorage.setItem('@webwomen:jobsselected', JSON.stringify([]))
+  const arrayLocalStorage = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
+  const selectedJobsList = document.querySelector('.selectedJobsList');
+
+  if(localStorage.length === 0 || selectedJobsList.innerHTML == ""){
+
+    localStorage.setItem('@webwomen:jobsselected', JSON.stringify([]));
+
+    selectedJobsList.insertAdjacentHTML('beforeend', 
+    `<p>You haven't selected any job yet.</p>`
+    )
 
   } else {
     renderSelectedJobs(JSON.parse(localStorage.getItem('@webwomen:jobsselected')))
@@ -109,7 +119,6 @@ function checkLocalStorage () {
 
 }
 
-checkLocalStorage ()
 
 function removeJobButton () {
 
@@ -126,8 +135,13 @@ function removeJobButton () {
 
       localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageList));
 
+      
       renderSelectedJobs(localStorageList);
     })
   })
+
 }
+
+checkLocalStorage ()
+
 

@@ -6,7 +6,6 @@
     background-position: center;    
     padding: 0 1rem;
     display: flex;
-    /* gap: 3.75rem; */
     align-items: center;
 }
 
@@ -17,7 +16,6 @@
     gap: 3.75rem;
     max-width: 1400px;
 }
-
 
 .header__container > nav > img {
     width: 193.31px;
@@ -134,8 +132,7 @@ div.tagButton__container > button {
     border: 2px solid #6741D9;
     padding: 7px 87px;
     border-radius: 8px;
-    font-size: var(--text-2);
-    
+    font-size: var(--text-2);   
 }
 
 button {

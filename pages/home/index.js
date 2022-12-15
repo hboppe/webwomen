@@ -27,7 +27,7 @@ function renderJobs(jobsList){
                 <p class="tag">${job.modalities[1]}</p>
                 </div>
               
-              <button data-id: "${job.id}">Apply</button>
+              <button class="applyButton" data-id: "${job.id}">Apply</button>
             </div>
         `)
     })
@@ -35,27 +35,4 @@ function renderJobs(jobsList){
 
 renderJobs(jobsData)
 
-/* 
-<li class="jobOffer">
-
-            <div class="jobOffer__topContainer">
-              <h4>Pessoa desenvolvedora front-end - React JS</h4>
-              
-              <div class="small__container">
-                <small>Kenzie Academy</small>
-                <small>Curitiba</small>
-              </div>
-            </div>
-           
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, sunt reprehenderit voluptatem culpa rerum fugit laudantium velit vel debitis perferendis, explicabo autem iure fuga recusandae numquam, voluptatibus aperiam est! Sit.</p>
-
-            <div class="tagButton__container">
-
-              <p class="tag">Home Office</p>
-
-              <button>Apply</button>
-            </div>
-          </li>
-*/
 

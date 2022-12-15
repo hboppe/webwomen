@@ -60,7 +60,7 @@
 }
 
 section.jobs {
-    padding: 2.813rem 1rem;
+    padding: 2.813rem 1rem 0rem;
 }
 
 section.jobs > h4 {
@@ -141,4 +141,50 @@ div.tagButton__container > button {
 
 button {
     cursor: pointer;
+}
+
+.selectedJobs__container{
+    background-color: var(--color-grey-6);
+    margin: 0 1rem 2.688rem;
+    border-radius: 8px;
+}
+
+.selectedJobs__container > h4 {
+    padding: 2rem ;
+}
+
+.selectedJobs__container hr {
+    width: 100%;
+    border: var(--color-grey-5) 1px solid;
+}
+
+.selectedJobsList > p{
+    color: var(--color-grey-2);
+    font-size: var(--text-2);
+    padding: 2.625rem 2rem 3.625rem;
+}
+
+li.selectedJob {
+    position: relative;
+    list-style: none;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+li.selectedJob > h5 {
+    width: 80%;
+}
+
+li.selectedJob > button {
+    position: absolute;
+    right: 14px;
+    top: 2rem;
+    padding: 10px 12px;
+    background-color: var(--color-grey-5);
+    border: 2px solid var(--color-grey-5);
+    border-radius: 8px;
+    
 }

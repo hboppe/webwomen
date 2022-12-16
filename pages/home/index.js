@@ -173,7 +173,9 @@ function removeJobButton () {
 
       localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageList));
 
-      applyButtons.find((applyButton) => applyButton.dataset.id === button.dataset.id).innerText = "Apply";
+      const currentApplyButton = applyButtons.find((applyButton) => applyButton.dataset.id === button.dataset.id);
+
+      currentApplyButton.innerText = "Apply";
 
       renderSelectedJobs(localStorageList);
 

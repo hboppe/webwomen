@@ -1,4 +1,3 @@
-/* Desenvolva sua estilização aqui... */
 .header__container {
     background-image: url(/assets/img/header-bg.svg);
     height: 789px;
@@ -23,7 +22,7 @@
 
 }
 
-.header__container > nav > button {
+.header__container > nav  button {
     font-size: var(--text-2);
     background-color: var(--color-brand-1);
     border: 0;
@@ -32,10 +31,16 @@
     padding: 0.75rem 3.125rem;
 }
 
-.header__container > nav > button:hover {
+.header__container > nav  button:hover {
     background-color: var(--color-brand-2);
     transition: .5s ease;
 }
+
+.header__container  button > a{
+    text-decoration: inherit;
+    color: inherit;
+}
+
 
 .text__container {
     display: flex;

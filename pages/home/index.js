@@ -47,7 +47,6 @@ function renderJobs(jobsList){
 
 }
 
-renderJobs(jobsData);
 
 function selectJobs(jobsList) {
     const addJobButtons = [...document.querySelectorAll('.applyButton')];
@@ -99,7 +98,6 @@ function selectJobs(jobsList) {
     })
 }
 
-selectJobs(jobsData)
 
 function renderSelectedJobs(jobsSelected){
   const selectedJobsList = document.querySelector('.selectedJobsList');
@@ -185,6 +183,16 @@ function removeJobButton () {
 
 }
 
+function goToJobs (url){
+
+  // window.location.href = url;
+}
+renderJobs(jobsData);
+
+selectJobs(jobsData)
+
 checkLocalStorage ()
+
+goToJobs ()
 
 

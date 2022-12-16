@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .header__container {
     background-image: url(/assets/img/header-bg.svg);
     height: 789px;
@@ -6,6 +10,8 @@
     padding: 0 1rem;
     display: flex;
     align-items: center;
+    width: 100vw;
+
 }
 
 .header__container > nav {
@@ -40,7 +46,6 @@
     text-decoration: inherit;
     color: inherit;
 }
-
 
 .text__container {
     display: flex;
@@ -234,9 +239,10 @@ li.selectedJob > button:hover {
 }
 
 @media(min-width: 991px){
+
     main {
         padding: 0 2rem;
-        width: 1300px;
+        width: 100vw;
         max-width: 1400px;
         margin: 0 auto;
         display: flex;
@@ -246,9 +252,8 @@ li.selectedJob > button:hover {
     }
 
     .header__container > nav {
-        max-width: 1400px;
+        width: 1300px;
         margin: 0 auto;
-        padding: 0px;
     }
     .section.jobs {
         max-width: 550px;

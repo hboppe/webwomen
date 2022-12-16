@@ -1,23 +1,23 @@
 
 function renderJobs(jobsList){
 
-    const jobsSection = document.querySelector('.jobsList');
+  const jobsSection = document.querySelector('.jobsList');
 
     jobsList.map((job) => {
-        jobsSection.insertAdjacentHTML("beforeend", 
-        `
-        <li class="jobOffer">
+      jobsSection.insertAdjacentHTML("beforeend", 
+      `
+      <li class="jobOffer">
 
-            <div class="jobOffer__topContainer">
-              <h4>${job.title} - React JS</h4>
+        <div class="jobOffer__topContainer">
+          <h4>${job.title} - React JS</h4>
               
-              <div class="small__container">
-                <small>${job.enterprise}</small>
-                <small>${job.location}</small>
-              </div>
-            </div>
+          <div class="small__container">
+            <small>${job.enterprise}</small>
+            <small>${job.location}</small>
+          </div>
+        </div>
            
-            <p>${job.descrition}</p>
+        <p>${job.descrition}</p>
 
             <div class="tagButton__container">
                 <div class="tag__container">
@@ -28,7 +28,25 @@ function renderJobs(jobsList){
               <button class="applyButton" data-id= ${job.id} >Apply</button>
             </div>
         `)
+  
     })
+
+    const applyButtons = [...document.querySelectorAll('.applyButton')];
+
+    const localStorageList = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
+
+    console.log(localStorageList)
+
+    if(localStorageList != null && localStorageList.length > 0){
+
+      applyButtons.forEach((button) => {
+        if(localStorageList.find((job) => job.id === Number(button.dataset.id))){
+          button.innerText = "Remove Application"
+        }
+      })
+      
+    }
+
 }
 
 renderJobs(jobsData);
@@ -44,7 +62,10 @@ function selectJobs(jobsList) {
             const localStorageSJ = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
 
             if(localStorageSJ.length === 0){
+
               localStorageSJ.push(selectedJob);
+
+              button.innerText = "Remove application"
 
               localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
 
@@ -52,6 +73,9 @@ function selectJobs(jobsList) {
             }
             else if(localStorageSJ.find((elem) => elem.id === selectedJob.id) === undefined) {
               localStorageSJ.push(selectedJob);
+
+              button.innerText = "Remove application"
+
 
               localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
 
@@ -96,7 +120,6 @@ function renderSelectedJobs(jobsSelected){
     checkLocalStorage ();
   }
 
-
   removeJobButton()
 }
 
@@ -123,6 +146,7 @@ function checkLocalStorage () {
 function removeJobButton () {
 
   const removeButtons = [...document.querySelectorAll('.removeButton')]
+  const applyButtons = [...document.querySelectorAll('.applyButton')];
 
   removeButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -135,8 +159,11 @@ function removeJobButton () {
 
       localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageList));
 
-      
+      applyButtons.find((applyButton) => applyButton.dataset.id === button.dataset.id).innerText = "Apply";
+
       renderSelectedJobs(localStorageList);
+
+
     })
   })
 

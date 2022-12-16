@@ -35,8 +35,6 @@ function renderJobs(jobsList){
 
     const localStorageList = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
 
-    console.log(localStorageList)
-
     if(localStorageList != null && localStorageList.length > 0){
 
       applyButtons.forEach((button) => {
@@ -54,12 +52,12 @@ renderJobs(jobsData);
 function selectJobs(jobsList) {
     const addJobButtons = [...document.querySelectorAll('.applyButton')];
 
-    const localStorageSJ = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
-
     addJobButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
 
             const selectedJob = jobsData.find(job => job.id === Number(event.target.dataset.id));
+
+            const localStorageSJ = JSON.parse(localStorage.getItem('@webwomen:jobsselected'));
 
             if(localStorageSJ.length === 0){
 
@@ -70,18 +68,21 @@ function selectJobs(jobsList) {
               localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
 
               renderSelectedJobs(localStorageSJ);
+              return;
             }
             else if(localStorageSJ.find((elem) => elem.id === selectedJob.id) === undefined) {
+
               localStorageSJ.push(selectedJob);
 
               button.innerText = "Remove application"
 
-
               localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
 
               renderSelectedJobs(localStorageSJ);
+              return;
 
             } else {
+
               event.target.innerText = "Apply";
 
               const indexOfElement = localStorageSJ.findIndex(job => job.id === selectedJob.id);
@@ -91,6 +92,8 @@ function selectJobs(jobsList) {
               localStorage.setItem('@webwomen:jobsselected', JSON.stringify(localStorageSJ));
 
               renderSelectedJobs(localStorageSJ);
+              return;
+
             }
         })
     })
@@ -148,7 +151,9 @@ function checkLocalStorage () {
     )
 
   } else {
+
     renderSelectedJobs(JSON.parse(localStorage.getItem('@webwomen:jobsselected')))
+
   }
 
 }
